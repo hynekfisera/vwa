@@ -1,6 +1,7 @@
 import Head from "next/head";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import GAWrapper from "./GAWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msapplication-TileColor" content="#0ea5e9" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <GAWrapper />
+        {children}
+      </body>
     </html>
   );
 }
