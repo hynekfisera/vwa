@@ -31,6 +31,6 @@ body {
   }
 
   .btn-outline {
-    @apply bg-transparent border-gray-600 hover:border-gray-900;
+    @apply text-gray-950 bg-transparent border-gray-600 hover:border-gray-900;
   }
 }
