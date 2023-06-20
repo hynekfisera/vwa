@@ -34,6 +34,7 @@ export const videos: Array<Video> = [
     released: "3.7.2022",
     content: ["CSS syntax", "Kde a jak se CSS používá", "CSS selektory", "Nejpoužívanější CSS styly"],
     previous: 1,
+    prerequisites: [1],
     thumbnail: Thumbnail2,
   },
   {
