@@ -13,6 +13,6 @@ export default function VideoTypeLabel({ type, className }: Props) {
     case VideoType.Main:
       return <div className={`${className} text-sky-500`}>Hlavní série</div>;
     case VideoType.Extra:
-      return <div className={`${className} text-orange-500`}>Teoretické video</div>;
+      return <div className={`${className} text-orange-500`}>Teorie</div>;
   }
 }

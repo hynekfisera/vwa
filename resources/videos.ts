@@ -5,6 +5,7 @@ import Thumbnail2 from "@/public/thumbnails/2.png";
 import Thumbnail3 from "@/public/thumbnails/3.png";
 import Thumbnail4 from "@/public/thumbnails/4.png";
 import Thumbnail5 from "@/public/thumbnails/5.png";
+import Thumbnail5_1 from "@/public/thumbnails/5.1.png";
 
 export const videos: Array<Video> = [
   {
@@ -69,5 +70,14 @@ export const videos: Array<Video> = [
     previous: 4,
     prerequisites: [4],
     thumbnail: Thumbnail5,
+  },
+  {
+    id: 5.1,
+    type: VideoType.Extra,
+    title: "Domény, DNS a Cloudflare",
+    href: "#",
+    released: "",
+    content: ["Co je doména?", "Co je DNS?", "Registrace domény", "Co je Cloudflare?", "Konfigurace NS a DNS", "DNS záznamy"],
+    thumbnail: Thumbnail5_1,
   },
 ];
