@@ -16,7 +16,7 @@ export default function Home() {
         <p className="sm:text-lg text-gray-600 max-w-screen-sm text-center">Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS</p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="https://www.youtube.com/watch?v=uYpxsQ9LXtU&list=PLKkDvxLpWDX26YIMc-2sjlO4a5U8t9C3h" className="btn btn-primary">
-            Sledovat ZDARMA od začátku
+            Sledovat od začátku
           </Link>
           <Link href="https://www.youtube.com/playlist?list=PLKkDvxLpWDX26YIMc-2sjlO4a5U8t9C3h" className="btn btn-outline">
             Přejít na playlist
