@@ -2,6 +2,9 @@ import Head from "next/head";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import GAWrapper from "./GAWrapper";
+import { config as faConfig } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+faConfig.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"] });
 
