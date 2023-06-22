@@ -75,9 +75,9 @@ export const videos: Array<Video> = [
     id: 5.1,
     type: VideoType.Extra,
     title: "Domény, DNS a Cloudflare",
-    href: "#",
-    released: "",
-    content: ["Co je doména?", "Co je DNS?", "Registrace domény", "Co je Cloudflare?", "Konfigurace NS a DNS", "DNS záznamy"],
+    href: "https://youtu.be/pdx-93_JEqw",
+    released: "22.6.2023",
+    content: ["Co je doména?", "Co je DNS?", "DNS záznamy", "Registrace domény", "Co je Cloudflare?"],
     thumbnail: Thumbnail5_1,
   },
 ];
