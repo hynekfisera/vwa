@@ -27,7 +27,7 @@ body {
   }
 
   .btn-primary {
-    @apply text-white border-transparent bg-sky-500 hover:bg-sky-600;
+    @apply text-white border-transparent bg-pink-400 hover:bg-pink-500;
   }
 
   .btn-outline {

@@ -14,7 +14,7 @@ export default function Home() {
     <main className="bg-gradient-to-br from-white via-gray-50 to-gray-50">
       <Header />
       <section className="px-12 lg:px-0 pt-12 sm:pt-16 pb-20 w-full max-w-screen-xl mx-auto flex flex-col items-center gap-5 sm:gap-4">
-        <h1 className="text-center text-gray-950 text-2xl sm:text-3xl md:text-4xl lg:text-5xl sm:font-light">Vývoj Webových Aplikací</h1>
+        <h1 className="bg-[url('/assets/gradient.jpg')] bg-bottom pb-2 bg-no-repeat bg-[length:150%_200%] text-transparent bg-clip-text contrast-125 text-center text-3xl md:text-4xl lg:text-5xl font-bold sm:font-extrabold">Vývoj Webových Aplikací</h1>
         <p className="sm:text-lg text-gray-600 max-w-screen-sm text-center">Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS</p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="https://www.youtube.com/watch?v=uYpxsQ9LXtU&list=PLKkDvxLpWDX26YIMc-2sjlO4a5U8t9C3h" className="btn btn-primary">
