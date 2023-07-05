@@ -1,15 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 
 export default function Footer() {
   return (
     <footer>
-      <div className="px-12 xl:px-0 w-full max-w-screen-xl mx-auto flex justify-center items-center bg-transparent py-8">
-        <p className="pt-6 text-center text-gray-500">
-          &copy; {new Date().getFullYear()} Hynek Fišera | Vytvořeno pomocí{" "}
-          <a href="https://nextjs.org/" target="_blank" rel="noreferrer noopener">
-            Next.js
+      <div className="px-12 xl:px-0 mt-6 w-full max-w-screen-sm mx-auto flex flex-col items-center gap-2 bg-transparent py-8">
+        <a href="https://www.buymeacoffee.com/hynekfisera" target="_blank" rel="noreferrer noopener" className="h-8">
+          <img className="h-full w-auto" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hynekfisera&button_colour=f472b6&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=FFDD00" alt="Buy Me a Coffee" />
+        </a>
+        <div className="text-center text-gray-700 font-medium text-xs">
+          &copy; {new Date().getFullYear()}{" "}
+          <a href="https://hynekfisera.cz/" target="_blank" rel="noreferrer noopener" className="underline">
+            Hynek Fišera
           </a>
-        </p>
+        </div>
       </div>
     </footer>
   );
