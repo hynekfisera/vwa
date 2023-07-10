@@ -6,6 +6,7 @@ import Thumbnail3 from "@/public/thumbnails/3.png";
 import Thumbnail4 from "@/public/thumbnails/4.png";
 import Thumbnail5 from "@/public/thumbnails/5.png";
 import Thumbnail5_1 from "@/public/thumbnails/5.1.png";
+import Thumbnail5_2 from "@/public/thumbnails/5.2.png";
 
 export const videos: Array<Video> = [
   {
@@ -79,5 +80,14 @@ export const videos: Array<Video> = [
     released: "22.6.2023",
     content: ["Co je doména?", "Co je DNS?", "DNS záznamy", "Registrace domény", "Co je Cloudflare?"],
     thumbnail: Thumbnail5_1,
+  },
+  {
+    id: 5.2,
+    type: VideoType.Extra,
+    title: "Git a GitHub Desktop",
+    href: "",
+    released: "",
+    content: ["Co je Git?", "Git x GitHub", "Základní pojmy", "Vytvoření repozitáře", "Přidávání změn", "Ukázka pull requestu"],
+    thumbnail: Thumbnail5_2,
   },
 ];
