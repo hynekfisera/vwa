@@ -6,10 +6,36 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import axios from "axios";
 
 videos.sort((a, b) => b.id - a.id);
 
-export default function Home() {
+async function getStats(): Promise<{ views: number; likes: number }> {
+  try {
+    const resPlaylist = await axios.get(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=PLKkDvxLpWDX26YIMc-2sjlO4a5U8t9C3h&key=${process.env.YOUTUBE_SECRET}`);
+    const ids = resPlaylist.data.items.map((item: any) => item.contentDetails.videoId);
+    const resVideos = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=statistics&id=${ids.join(",")}&key=${process.env.YOUTUBE_SECRET}`);
+    const views = resVideos.data.items.map((item: any) => item.statistics.viewCount);
+    const likes = resVideos.data.items.map((item: any) => item.statistics.likeCount);
+    return {
+      views: views.reduce((a: string, b: string) => +a + +b, 0),
+      likes: likes.reduce((a: string, b: string) => +a + +b, 0),
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      views: 0,
+      likes: 0,
+    };
+  }
+}
+
+export const revalidate = 3600;
+
+export default async function Home() {
+  const { views, likes } = await getStats();
+  console.log(views, likes);
+
   return (
     <main className="bg-gradient-to-br from-white via-gray-50 to-gray-50">
       <Header />
