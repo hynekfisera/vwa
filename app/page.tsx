@@ -1,31 +1,35 @@
-import { videos } from "@/resources/videos";
-import Image from "next/image";
-import VideoTypeLabel from "./VideoTypeLabel";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import axios from "axios";
+import VideosSection from "./VideosSection";
 
-videos.sort((a, b) => b.id - a.id);
-
-async function getStats(): Promise<{ views: number; likes: number }> {
+async function getStats(): Promise<{ views: number | null; likes: number | null; durationSeconds: number | null }> {
   try {
     const resPlaylist = await axios.get(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=PLKkDvxLpWDX26YIMc-2sjlO4a5U8t9C3h&key=${process.env.YOUTUBE_SECRET}`);
     const ids = resPlaylist.data.items.map((item: any) => item.contentDetails.videoId);
-    const resVideos = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=statistics&id=${ids.join(",")}&key=${process.env.YOUTUBE_SECRET}`);
+    const resVideos = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${ids.join(",")}&key=${process.env.YOUTUBE_SECRET}`);
     const views = resVideos.data.items.map((item: any) => item.statistics.viewCount);
     const likes = resVideos.data.items.map((item: any) => item.statistics.likeCount);
+    const duration = resVideos.data.items.map((item: any) => item.contentDetails.duration);
     return {
-      views: views.reduce((a: string, b: string) => +a + +b, 0),
-      likes: likes.reduce((a: string, b: string) => +a + +b, 0),
+      views: views.reduce((a: number, b: string) => a + +b, 0),
+      likes: likes.reduce((a: number, b: string) => a + +b, 0),
+      durationSeconds: duration.reduce((a: number, b: string) => {
+        const minutes = RegExp(/(\d+)M/).exec(b)?.[1] ?? 0;
+        const seconds = RegExp(/(\d+)S/).exec(b)?.[1] ?? 0;
+        return a + +minutes * 60 + +seconds;
+      }, 0),
     };
   } catch (error) {
     console.log(error);
     return {
-      views: 0,
-      likes: 0,
+      views: null,
+      likes: null,
+      durationSeconds: null,
     };
   }
 }
@@ -33,8 +37,7 @@ async function getStats(): Promise<{ views: number; likes: number }> {
 export const revalidate = 3600;
 
 export default async function Home() {
-  const { views, likes } = await getStats();
-  console.log(views, likes);
+  const { views, likes, durationSeconds } = await getStats();
 
   return (
     <main className="bg-gradient-to-br from-white via-gray-50 to-gray-50">
@@ -51,76 +54,39 @@ export default async function Home() {
           </Link>
         </div>
       </section>
-      <section className="p-12 lg:px-0 w-full max-w-screen-lg mx-auto">
-        <h2 className="text-center font-semibold text-2xl text-gray-700">Seznam videí</h2>
-        <div className="text-center text-xs text-gray-500 mb-12">Seřazen od nejnovějších</div>
-        <div className="flex flex-col gap-16">
-          {videos.map((video) => (
-            <div key={video.id} className="grid sm:grid-cols-2 gap-8 place-items-center">
-              <div className="max-w-[90%] sm:max-w-[70%]">
-                <Image src={video.thumbnail} alt={video.title} className="rounded-lg shadow-xl" />
-              </div>
-              <div className="w-[75%] sm:w-full">
-                <VideoTypeLabel type={video.type} className="uppercase text-sm" />
-                <h3 className="text-2xl font-medium text-gray-900">{video.title}</h3>
-                <div className="grid sm:grid-cols-2">
-                  <div>
-                    {video.content && (
-                      <div className="mt-3">
-                        <h4 className="text-xs font-medium mb-1 uppercase text-gray-700">Obsah</h4>
-                        <ul className="text-gray-600 text-sm list-disc list-inside">
-                          {video.content.map((content) => (
-                            <li key={content}>{content}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                  <div>
-                    {video.previous !== undefined && (
-                      <div className="mt-3">
-                        <h4 className="text-xs font-medium mb-1 uppercase text-gray-700">
-                          Navazuje na <strong className="font-semibold"></strong>
-                        </h4>
-                        <ul className="text-gray-600 text-sm list-disc list-inside">
-                          <li>
-                            <Link href={videos.find((v) => v.id === video.previous)!.href} className="hover:underline">
-                              {videos.find((v) => v.id === video.previous)!.title}
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                    {video.prerequisites && (
-                      <div className="mt-3">
-                        <h4 className="text-xs font-medium mb-1 uppercase text-gray-700">Předpoklady</h4>
-                        <ul className="text-gray-600 text-sm list-disc list-inside">
-                          {video.prerequisites.map((prerequisiteId) => {
-                            const prerequisite = videos.find((v) => v.id === prerequisiteId);
-                            return (
-                              prerequisite && (
-                                <li key={prerequisiteId}>
-                                  <Link href={prerequisite.href} className="hover:underline">
-                                    {prerequisite.title}
-                                  </Link>
-                                </li>
-                              )
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <Link href={video.href} className="btn btn-outline">
-                    Přejít na video
-                  </Link>
-                </div>
-              </div>
+      <VideosSection />
+      <section className="p-12 pb-4 lg:px-0 w-full max-w-screen-lg mx-auto">
+        <div className="bg-white p-8 md:py-4 rounded-3xl shadow-lg shadow-gray-700/10 flex flex-col md:flex-row md:justify-between gap-8">
+          <div className="flex flex-wrap items-center gap-8 md:gap-16">
+            <div className="flex flex-col">
+              <div className="text-sm text-gray-500 mb-0.5">Sérii vidělo přes</div>
+              <div className="text-gray-700 text-3xl font-bold">{views ?? "?"}</div>
+              <div className="text-sm text-gray-800 font-medium -mt-0.5">diváků</div>
             </div>
-          ))}
+            <div className="flex flex-col">
+              <div className="text-sm text-gray-500 mb-0.5">Videa nasbírala</div>
+              <div className="text-gray-700 text-3xl font-bold">
+                {likes ?? "?"}
+                <span className="text-xl">x</span>
+              </div>
+              <div className="text-sm text-gray-800 font-medium -mt-0.5">&quot;to se mi líbí&quot;</div>
+            </div>
+            <div className="flex flex-col">
+              <div className="text-sm text-gray-500 mb-0.5">Celou sérii tvoří</div>
+              <div className="text-gray-700 text-3xl font-bold">{durationSeconds ? (durationSeconds / 60).toFixed(0) : "?"}</div>
+              <div className="text-sm text-gray-800 font-medium -mt-0.5">minut obsahu</div>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-16">
+            <div className="flex flex-col md:items-end gap-2 md:max-w-[230px]">
+              <div className="text-sm text-gray-500 md:text-right">Pomohla série i tobě? Zvaž prosím finanční podporu mé tvorby</div>
+              <a href="https://www.buymeacoffee.com/hynekfisera" target="_blank" rel="noreferrer noopener" className="h-8">
+                <img className="h-full w-auto" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hynekfisera&button_colour=f472b6&font_colour=f1f5f9&font_family=Inter&outline_colour=000000&coffee_colour=f1f5f9" alt="Buy Me a Coffee" />
+              </a>
+            </div>
+          </div>
         </div>
+        <div className="text-xs text-gray-400 mx-4 my-3">Zdrojem je oficiální YouTube API. Data se aktualizují jednou za hodinu.</div>
       </section>
       <Footer />
     </main>
