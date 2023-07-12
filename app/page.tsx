@@ -59,12 +59,12 @@ export default async function Home() {
         <div className="bg-white p-8 md:py-4 rounded-3xl shadow-lg shadow-gray-700/10 flex flex-col md:flex-row md:justify-between gap-8">
           <div className="flex flex-wrap items-center gap-8 md:gap-16">
             <div className="flex flex-col">
-              <div className="text-sm text-gray-500 mb-0.5">Sérii vidělo přes</div>
+              <div className="text-sm text-gray-500 mb-0.5">Videa zhlédlo přes</div>
               <div className="text-gray-700 text-3xl font-bold">{views ?? "?"}</div>
               <div className="text-sm text-gray-800 font-medium -mt-0.5">diváků</div>
             </div>
             <div className="flex flex-col">
-              <div className="text-sm text-gray-500 mb-0.5">Videa nasbírala</div>
+              <div className="text-sm text-gray-500 mb-0.5">Série nasbírala</div>
               <div className="text-gray-700 text-3xl font-bold">
                 {likes ?? "?"}
                 <span className="text-xl">x</span>
