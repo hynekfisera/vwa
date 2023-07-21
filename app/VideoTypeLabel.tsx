@@ -1,4 +1,4 @@
-import { VideoType } from "@/types/Video";
+import { VIDEO_TYPE, VideoType } from "@hynekfisera/arfi-common";
 import React from "react";
 
 type Props = {
@@ -6,13 +6,13 @@ type Props = {
   className?: string;
 };
 
-export default function VideoTypeLabel({ type, className }: Props) {
+export default function VIDEO_TYPELabel({ type, className }: Props) {
   switch (type) {
-    case VideoType.Introduction:
+    case VIDEO_TYPE.Introduction:
       return <div className={`${className} text-green-500`}>Úvodní video</div>;
-    case VideoType.Main:
+    case VIDEO_TYPE.Main:
       return <div className={`${className} text-sky-500`}>Hlavní série</div>;
-    case VideoType.Extra:
+    case VIDEO_TYPE.Extra:
       return <div className={`${className} text-orange-500`}>Teorie</div>;
   }
 }

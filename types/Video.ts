@@ -1,19 +1,6 @@
 import { StaticImageData } from "next/image";
+import { Video as _Video } from "@hynekfisera/arfi-common";
 
-export enum VideoType {
-  Introduction = "Introduction",
-  Main = "Main",
-  Extra = "Extra",
-}
-
-export type Video = {
-  id: number;
-  type: VideoType;
-  title: string;
-  href: string;
-  released: string;
-  content?: Array<string>;
-  previous?: number;
-  prerequisites?: Array<number>;
+export type Video = _Video & {
   thumbnail: StaticImageData;
 };
