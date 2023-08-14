@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 };
 
-export default function VIDEO_TYPELabel({ type, className }: Props) {
+export default function VideoTypeLabel({ type, className }: Props) {
   switch (type) {
     case VIDEO_TYPE.Introduction:
       return <div className={`${className} text-green-500`}>Úvodní video</div>;

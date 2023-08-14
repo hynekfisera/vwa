@@ -103,17 +103,19 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@hynekfisera/arfi-common@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@hynekfisera/arfi-common/-/arfi-common-1.5.0.tgz#8381078da5ba1a2710676595328680fcd7d90102"
-  integrity sha512-M8Hq454peTQBliST6caWX4kop7n6jLaUOkUVu8qaqeonY4oq5ri+2lpkHjGXRC0dXFo+DMBEJg+fzb3ZEiZPqg==
-
-"@hynekfisera/arfi-common@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@hynekfisera/arfi-common/-/arfi-common-1.6.0.tgz#49859d24c3e361be2df59a435275190e185b26dc"
-  integrity sha512-hRSjinY94NVpduz++beiZsvdAeuvm0BF7qssSGMBE+4Ak9dsmoZqwIHx0lnQITd7bHjioZ1+dzKKB983uU5k+g==
+"@hynekfisera/arfi-common@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@hynekfisera/arfi-common/-/arfi-common-1.8.0.tgz#3b4cb701e802dd241cd85c3f79e8887dc001771b"
+  integrity sha512-7WSyLsGnPUHUdTX+WFq14CdCjY4uRupKJlfjS/B6TJDGHl8jqkEURNYVhlOiSnhP9poxwp5bB00QS/iCpeMUnQ==
   dependencies:
-    "@hynekfisera/arfi-common" "^1.5.0"
+    "@hynekfisera/arfi-common" "^1.8.0"
+
+"@hynekfisera/arfi-common@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@hynekfisera/arfi-common/-/arfi-common-1.8.1.tgz#04c5ab6af2c37180c732e8660befbfeb74705936"
+  integrity sha512-lPhz5H0VHZGh/zsKhk0rPeBKJtTj+wvc6XCORPDN5ABW0WALQbG50jsGY4jr6sEiRtJ0r3TWMVVJJuZc6odYfA==
+  dependencies:
+    "@hynekfisera/arfi-common" "^1.8.0"
 
 "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"

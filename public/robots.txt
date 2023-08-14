@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://vwa.cz
+
+# Sitemaps
+Sitemap: https://vwa.cz/sitemap.xml

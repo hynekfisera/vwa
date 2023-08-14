@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { videos } from "@/resources/videos";
+import { videos } from "@hynekfisera/arfi-common";
 import Link from "next/link";
 import Image from "next/image";
 import VideoTypeLabel from "./VideoTypeLabel";
