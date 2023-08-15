@@ -110,10 +110,10 @@
   dependencies:
     "@hynekfisera/arfi-common" "^1.8.0"
 
-"@hynekfisera/arfi-common@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@hynekfisera/arfi-common/-/arfi-common-1.8.1.tgz#04c5ab6af2c37180c732e8660befbfeb74705936"
-  integrity sha512-lPhz5H0VHZGh/zsKhk0rPeBKJtTj+wvc6XCORPDN5ABW0WALQbG50jsGY4jr6sEiRtJ0r3TWMVVJJuZc6odYfA==
+"@hynekfisera/arfi-common@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@hynekfisera/arfi-common/-/arfi-common-1.8.2.tgz#066324fcd466d90983a523cabdd74517e1dd4e79"
+  integrity sha512-/m0H6AA5wf1oXK02/NsmJp925JQRtw4vSy+r5C+eJGiCJ4fA+mK9okZm0Jb373juqxuQN6Ijq71Rlv7DtoqIDQ==
   dependencies:
     "@hynekfisera/arfi-common" "^1.8.0"
 
