@@ -18,6 +18,11 @@ export const metadata = {
     siteName: "VWA",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vývoj Webových Aplikací",
+    description: "Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
