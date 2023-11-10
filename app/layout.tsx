@@ -11,6 +11,13 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Vývoj Webových Aplikací",
   description: "Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS",
+  openGraph: {
+    title: "Vývoj Webových Aplikací",
+    description: "Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS",
+    url: "https://vwa.cz",
+    siteName: "VWA",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
