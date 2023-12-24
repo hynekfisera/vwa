@@ -36,9 +36,11 @@ export default function VideosSection() {
                   {video.content && (
                     <div className="mt-3">
                       <h4 className="text-xs font-medium mb-1 uppercase text-gray-700">Obsah</h4>
-                      <ul className="text-gray-600 text-sm list-disc list-inside">
+                      <ul className="text-gray-600 text-sm list-disc list-inside sm:pr-4">
                         {video.content.map((content) => (
-                          <li key={content}>{content}</li>
+                          <li key={content} className="sm:truncate">
+                            {content}
+                          </li>
                         ))}
                       </ul>
                     </div>
