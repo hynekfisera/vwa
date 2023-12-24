@@ -18,8 +18,8 @@ dependencies:
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.4.2)(react@18.2.0)
   '@hynekfisera/arfi-common':
-    specifier: ^1.8.4
-    version: 1.8.4
+    specifier: ^1.8.5
+    version: 1.8.5
   '@types/node':
     specifier: 20.3.1
     version: 20.3.1
@@ -187,8 +187,8 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: false
 
-  /@hynekfisera/arfi-common@1.8.4:
-    resolution: {integrity: sha512-jtWp94+ykznXVynqpEjGEI9nWdORPY85hAjNcrn0rlPRvZRk06m7qN7dOpNVOB1qO+ogoqf7kDAjMzb8hYCj/A==}
+  /@hynekfisera/arfi-common@1.8.5:
+    resolution: {integrity: sha512-Vrm/3VeokDcVOt/3eJgldws5JQ3Bo6HP9PhwEpN7Vla3u8LoKE9ki0ZJuf9vokdq3UX0hlkU6nKShqyBUXSnLQ==}
     dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
