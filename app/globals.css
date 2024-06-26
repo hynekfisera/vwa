@@ -11,6 +11,10 @@
     @apply text-white border-transparent bg-pink-500 hover:bg-pink-600;
   }
 
+  .btn-indigo {
+    @apply text-white border-transparent bg-indigo-600 hover:bg-indigo-700;
+  }
+
   .btn-outline {
     @apply text-gray-900 bg-transparent border-gray-500 hover:border-gray-900;
   }

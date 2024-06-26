@@ -3,11 +3,11 @@ import Link from "next/link";
 import Header from "./Header";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import axios from "axios";
 import VideosSection from "./VideosSection";
 
-async function getStats(): Promise<{ views: number | null; likes: number | null; durationSeconds: number | null }> {
+async function getStats(): Promise<{ views: number | null; likes: number | null; durationSeconds: number | null; members: number | null }> {
   try {
     const resPlaylist = await axios.get(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=PLKkDvxLpWDX26YIMc-2sjlO4a5U8t9C3h&key=${process.env.YOUTUBE_SECRET}`);
     const ids = resPlaylist.data.items.map((item: any) => item.contentDetails.videoId);
@@ -15,6 +15,10 @@ async function getStats(): Promise<{ views: number | null; likes: number | null;
     const views = resVideos.data.items.map((item: any) => item.statistics.viewCount);
     const likes = resVideos.data.items.map((item: any) => item.statistics.likeCount);
     const duration = resVideos.data.items.map((item: any) => item.contentDetails.duration);
+
+    const resMembers = await axios.get("https://discord.com/api/invites/2Fs4pkpCcG?with_counts=true");
+    const members = resMembers.data.approximate_member_count ?? null;
+
     return {
       views: views.reduce((a: number, b: string) => a + +b, 0),
       likes: likes.reduce((a: number, b: string) => a + +b, 0),
@@ -23,6 +27,7 @@ async function getStats(): Promise<{ views: number | null; likes: number | null;
         const seconds = RegExp(/(\d+)S/).exec(b)?.[1] ?? 0;
         return a + +minutes * 60 + +seconds;
       }, 0),
+      members,
     };
   } catch (error) {
     console.log(error);
@@ -30,6 +35,7 @@ async function getStats(): Promise<{ views: number | null; likes: number | null;
       views: null,
       likes: null,
       durationSeconds: null,
+      members: null,
     };
   }
 }
@@ -37,7 +43,7 @@ async function getStats(): Promise<{ views: number | null; likes: number | null;
 export const revalidate = 3600;
 
 export default async function Home() {
-  const { views, likes, durationSeconds } = await getStats();
+  const { views, likes, durationSeconds, members } = await getStats();
 
   return (
     <main className="bg-gray-50">
@@ -88,6 +94,20 @@ export default async function Home() {
         <div className="text-xs text-gray-400 mx-4 my-3">Zdrojem je oficiální YouTube API. Data se aktualizují jednou za hodinu.</div>
       </section>
       <VideosSection />
+      <section className="p-8 pt-16 lg:px-0 w-full max-w-screen-lg mx-auto">
+        <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 px-8 py-10 sm:px-10 sm:py-8 rounded-3xl shadow-lg shadow-gray-700/10 flex flex-col gap-4 sm:gap-3">
+          <h2 className="text-2xl sm:text-3xl text-indigo-800 font-medium tracking-tight">Staň se členem komunity</h2>
+          <p className="text-indigo-950">Přidej se k {members} členům komunitního Discord serveru, na kterém mimo jiné poskytujeme pomoc k videím.</p>
+          <div className="flex gap-2 flex-wrap">
+            <Link href="https://discord.gg/2Fs4pkpCcG" className="btn btn-indigo">
+              Připojit se <FontAwesomeIcon icon={faDiscord} />
+            </Link>
+            <Link href="https://www.arfi.cz/discord" className="btn btn-outline">
+              Více informací
+            </Link>
+          </div>
+        </div>
+      </section>
       <Footer />
     </main>
   );
