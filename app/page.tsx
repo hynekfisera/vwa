@@ -40,11 +40,11 @@ export default async function Home() {
   const { views, likes, durationSeconds } = await getStats();
 
   return (
-    <main className="bg-gradient-to-br from-white via-gray-50 to-gray-50">
+    <main className="bg-gray-50">
       <Header />
-      <section className="px-12 lg:px-0 pt-12 sm:pt-16 pb-20 w-full max-w-screen-xl mx-auto flex flex-col items-center gap-5 sm:gap-4">
-        <h1 className="bg-[url('/assets/gradient.jpg')] bg-bottom pb-2 bg-no-repeat bg-[length:150%_200%] text-transparent bg-clip-text contrast-125 text-center text-3xl md:text-4xl lg:text-5xl font-bold sm:font-extrabold">Vývoj Webových Aplikací</h1>
-        <p className="sm:text-lg text-gray-600 max-w-screen-sm text-center">Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS</p>
+      <section className="px-12 lg:px-0 pt-12 sm:pt-16 pb-20 w-full max-w-screen-lg mx-auto flex flex-col items-center md:items-start gap-5 sm:gap-6">
+        <h1 className="bg-clip-text text-transparent bg-gradient-to-br from-pink-500 to-pink-600 text-center md:text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold">Vývoj Webových Aplikací</h1>
+        <p className="sm:text-lg text-gray-600 max-w-screen-sm text-center md:text-left">Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS</p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="https://www.youtube.com/watch?v=uYpxsQ9LXtU&list=PLKkDvxLpWDX26YIMc-2sjlO4a5U8t9C3h" className="btn btn-primary">
             Sledovat na YouTube <FontAwesomeIcon icon={faYoutube} />
@@ -54,8 +54,7 @@ export default async function Home() {
           </Link>
         </div>
       </section>
-      <VideosSection />
-      <section className="p-12 pb-4 lg:px-0 w-full max-w-screen-lg mx-auto">
+      <section className="p-8 pt-0 lg:px-0 w-full max-w-screen-lg mx-auto">
         <div className="bg-white p-8 md:py-4 rounded-3xl shadow-lg shadow-gray-700/10 flex flex-col md:flex-row md:justify-between gap-8">
           <div className="flex flex-wrap items-center gap-8 md:gap-16">
             <div className="flex flex-col">
@@ -81,13 +80,14 @@ export default async function Home() {
             <div className="flex flex-col md:items-end gap-2 md:max-w-[230px]">
               <div className="text-sm text-gray-500 md:text-right">Pomohla série i tobě? Zvaž prosím finanční podporu mé tvorby</div>
               <a href="https://www.buymeacoffee.com/hynekfisera" target="_blank" rel="noreferrer noopener" className="h-8">
-                <img className="h-full w-auto" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hynekfisera&button_colour=f472b6&font_colour=f1f5f9&font_family=Inter&outline_colour=000000&coffee_colour=f1f5f9" alt="Buy Me a Coffee" />
+                <img className="h-full w-auto" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hynekfisera&button_colour=ec4899&font_colour=f1f5f9&font_family=Inter&outline_colour=000000&coffee_colour=f1f5f9" alt="Buy Me a Coffee" />
               </a>
             </div>
           </div>
         </div>
         <div className="text-xs text-gray-400 mx-4 my-3">Zdrojem je oficiální YouTube API. Data se aktualizují jednou za hodinu.</div>
       </section>
+      <VideosSection />
       <Footer />
     </main>
   );

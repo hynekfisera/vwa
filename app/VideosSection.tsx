@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import VideoTypeLabel from "./VideoTypeLabel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRepeat } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faRepeat } from "@fortawesome/free-solid-svg-icons";
 
 export default function VideosSection() {
   const [sortByNew, setSortByNew] = useState<boolean>(true);
@@ -18,8 +18,8 @@ export default function VideosSection() {
 
   return (
     <section className="p-12 lg:px-0 w-full max-w-screen-lg mx-auto flex flex-col items-center">
-      <h2 className="text-center font-semibold text-2xl text-gray-700">Seznam videí</h2>
-      <button onClick={() => setSortByNew((s) => !s)} className="select-none mt-1 text-center text-xs font-medium text-gray-500 mb-12 hover:underline">
+      <h2 className="text-center font-semibold text-2xl lg:text-3xl text-gray-700">Seznam videí</h2>
+      <button onClick={() => setSortByNew((s) => !s)} className="select-none mt-1 text-center text-xs lg:text-sm font-medium text-gray-500 mb-12 hover:underline">
         {sortByNew ? "Seřazen od nejnovějších" : "Seřazen od začátku"} <FontAwesomeIcon icon={faRepeat} />
       </button>
       <div className="flex flex-col gap-16">
@@ -84,7 +84,7 @@ export default function VideosSection() {
               </div>
               <div className="mt-4">
                 <Link href={video.href} className="btn btn-outline">
-                  Přejít na video
+                  Přejít na video <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
               </div>
             </div>

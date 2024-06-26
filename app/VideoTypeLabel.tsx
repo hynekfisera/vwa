@@ -11,7 +11,7 @@ export default function VideoTypeLabel({ type, className }: Props) {
     case VIDEO_TYPE.Introduction:
       return <div className={`${className} text-green-500`}>Úvodní video</div>;
     case VIDEO_TYPE.Main:
-      return <div className={`${className} text-sky-500`}>Hlavní série</div>;
+      return <div className={`${className} text-pink-500`}>Hlavní série</div>;
     case VIDEO_TYPE.Extra:
       return <div className={`${className} text-orange-500`}>Teorie</div>;
   }

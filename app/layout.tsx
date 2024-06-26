@@ -1,14 +1,12 @@
-import Head from "next/head";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import GAWrapper from "./GAWrapper";
 import { config as faConfig } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 faConfig.autoAddCss = false;
+import { GeistSans } from "geist/font/sans";
+import { Metadata } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "Vývoj Webových Aplikací",
   description: "Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS",
   openGraph: {
@@ -17,28 +15,24 @@ export const metadata = {
     url: "https://vwa.cz",
     siteName: "VWA",
     type: "website",
+    images: "/og-image.png",
   },
   twitter: {
     card: "summary_large_image",
     title: "Vývoj Webových Aplikací",
     description: "Série návodů ve které se naučíte vytvářet profesionální weby a webové aplikace za pomocí React frameworku Next.js a TailwindCSS",
   },
+  metadataBase: new URL("https://vwa.cz"),
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <Head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
-        <link rel="manifest" href="/site.webmanifest?v=2" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=2" color="#0ea5e9" />
-        <link rel="shortcut icon" href="/favicon.ico?v=2" />
-        <meta name="msapplication-TileColor" content="#0ea5e9" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
-      <body className={inter.className}>
+    <html lang="cs">
+      <body className={GeistSans.className}>
         <GAWrapper />
         {children}
       </body>
